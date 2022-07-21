@@ -2,12 +2,15 @@ package com.app.sqlitedemo.dbHelper;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
 import com.app.sqlitedemo.model.Employee;
+
+import java.util.ArrayList;
 
 public class EmployeeHandler extends SQLiteOpenHelper {
 
@@ -48,5 +51,42 @@ public class EmployeeHandler extends SQLiteOpenHelper {
 
         return employee.getId() == 0 ? db.insert(TABLE, null, contentValues) > 0 :
                 db.update(TABLE, contentValues, ID + " = ?", new String[]{String.valueOf(employee.getId())}) > 0;
+    }
+
+    public boolean deleteEmployee(Employee employee) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE, ID + " = ?", new String[]{String.valueOf(employee.getId())}) > 0;
+    }
+
+    public Employee getEmployee(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Employee employee = new Employee();
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            employee.setId(cursor.getInt(0));
+            employee.setName(cursor.getString(1));
+            employee.setDesignation(cursor.getString(2));
+            employee.setSalary(cursor.getDouble(3));
+        }
+        cursor.close();
+        return employee;
+    }
+
+    public ArrayList<Employee> getAllEmployees() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Employee> employees = new ArrayList<>();
+        String query = "SELECT * FROM " + TABLE;
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+                Employee employee = new Employee();
+                employee.setId(cursor.getInt(0));
+                employee.setName(cursor.getString(1));
+                employee.setDesignation(cursor.getString(2));
+                employee.setSalary(cursor.getDouble(3));
+                employees.add(employee);
+            }
+        cursor.close();
+        return employees;
     }
 }
