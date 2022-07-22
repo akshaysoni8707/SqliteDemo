@@ -26,9 +26,13 @@ public class EmployeeHandler extends SQLiteOpenHelper {
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE;
 
-    public EmployeeHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public EmployeeHandler(@Nullable Context context) {
         super(context, DBNAME, null, DATABASE_VERSION);
     }
+
+//    public EmployeeHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+//        super(context, DBNAME, null, DATABASE_VERSION);
+//    }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -53,9 +57,9 @@ public class EmployeeHandler extends SQLiteOpenHelper {
                 db.update(TABLE, contentValues, ID + " = ?", new String[]{String.valueOf(employee.getId())}) > 0;
     }
 
-    public boolean deleteEmployee(Employee employee) {
+    public boolean deleteEmployee(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE, ID + " = ?", new String[]{String.valueOf(employee.getId())}) > 0;
+        return db.delete(TABLE, ID + " = ?", new String[]{String.valueOf(id)}) > 0;
     }
 
     public Employee getEmployee(int id) {

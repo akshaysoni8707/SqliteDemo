@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewEmployeeActivity">
+    tools:context=".FormActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="20dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,39 +19,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/employeeViewId"
+            <EditText
+                android:id="@+id/editTextEmployeeName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="TextView"
-                android:textSize="16sp" />
+                android:ems="10"
+                android:hint="Enter Name"
+                android:inputType="textPersonName"
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/employeeViewName"
+            <EditText
+                android:id="@+id/editTextEmployeeDesignation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="TextView"
-                android:textSize="16sp" />
+                android:ems="10"
+                android:hint="Enter Designation"
+                android:inputType="textPersonName"
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/employeeViewDesignation"
+            <EditText
+                android:id="@+id/editTextEmployeeSalary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="TextView"
-                android:textSize="16sp" />
+                android:ems="10"
+                android:hint="Enter Salary"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-            <TextView
-                android:id="@+id/employeeViewSalary"
+            <Button
+                android:id="@+id/saveEmployee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="TextView"
-                android:textSize="16sp" />
+                android:layout_marginVertical="5dp"
+                android:text="SAVE" />
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

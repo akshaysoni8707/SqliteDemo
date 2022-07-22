@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/SqliteDemo/app/src/main/res/layout/activity_form.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SqliteDemo/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SqliteDemo/app/src/main/res/layout/activity_view_employee.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/SqliteDemo/app/src/main/res/layout/empoyee_card.xml" value="0.25" />

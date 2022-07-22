@@ -1,6 +1,8 @@
 package com.app.sqlitedemo.model;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
     private int id;
     private String name;
     private String designation;
